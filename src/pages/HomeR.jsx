@@ -70,7 +70,7 @@ const HomeR = () => {
       <div className="bubble-container absolute top-0 left-0 w-full h-full pointer-events-none z-0"></div>
       <div className="relative z-10 backdrop-blur-md bg-opacity-50 p-6 rounded-lg">
         <h1 className="text-5xl font-bold mb-8 text-center">Representantes 11</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
           {candidatos.map(({ id, nombre, imagen, votos }) => (
             <div key={id} className="border p-6 rounded-lg shadow-lg bg-white text-black">
               <img src={imagen} alt={nombre} className="w-40 h-40 mx-auto mb-4 rounded-2xl shadow-md" />

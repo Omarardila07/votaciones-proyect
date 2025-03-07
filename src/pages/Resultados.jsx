@@ -55,7 +55,7 @@ const Resultados = () => {
         <h1 className="text-5xl font-bold mb-8">Resultados</h1>
 
         <h2 className="text-3xl font-semibold mt-6 mb-3">Representantes 11</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {candidatos.length > 0 ? (
             candidatos.map(({ id, nombre, imagen, votos }) => (
               <div key={id} className="border p-6 rounded-lg shadow-lg bg-white text-black">
@@ -70,7 +70,7 @@ const Resultados = () => {
         </div>
 
         <h2 className="text-3xl font-semibold mt-6 mb-3">Contralores 10</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {contralores.length > 0 ? (
             contralores.map(({ id, nombre, imagen, votos }) => (
               <div key={id} className="border p-6 rounded-lg shadow-lg bg-white text-black">
