@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeR from "./pages/HomeR.jsx";
 import Resultados from "./pages/Resultados.jsx";
 import HomeC from "./pages/HomeC.jsx"
+import Home  from "./pages/Home.jsx"
 
 function App() {
   return (
