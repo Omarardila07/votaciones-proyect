@@ -50,10 +50,8 @@ const Home = () => {
             </h2>
           </div>
         </div>
-        <div className="flex gap-2 justify-center text-center items-center w-full mt-8 px-6 py-3 border-2 border-white text-white font-bold text-lg rounded-lg transition duration-300 hover:bg-white hover:text-black">
-          <button
-            onClick={irAOtraPagina}
-            
+        <div className="flex gap-2 justify-center text-center items-center w-full mt-8 px-6 py-3 border-2 border-white text-white font-bold text-lg rounded-lg transition duration-300 hover:bg-white hover:text-black " onClick={irAOtraPagina}>
+          <button 
           >
             Siguiente
           </button>
