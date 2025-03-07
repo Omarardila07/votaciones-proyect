@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /votaciones/{document=**} {
+      allow read, write: if true;
+    }
+    match/contralores/{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { db } from "../Firebase/config";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import Go from "../iconos/go";
 
 const HomeR = () => {
   const [candidatos, setCandidatos] = useState([]);
@@ -85,13 +86,9 @@ const HomeR = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center w-full mt-8">
-          <button
-            onClick={irAOtraPagina1}
-            className="mt-8 px-6 py-3 border-2 border-white text-white font-semibold text-lg rounded-lg transition duration-300 hover:bg-white hover:text-black"
-          >
-            Siguiente
-          </button>
+        <div className="flex gap-2 justify-center items-center w-full mt-6 px-6 py-3 border-2 border-white text-white font-bold text-lg rounded-lg transition duration-300 hover:bg-white hover:text-black cursor-pointer" onClick={irAOtraPagina1}>
+          <button>Siguiente</button>
+          <Go />
         </div>
       </div>
       <style>

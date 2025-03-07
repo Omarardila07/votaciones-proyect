@@ -32,7 +32,7 @@ const Home = () => {
     <div className="relative flex flex-col justify-center items-center min-h-screen p-4 bg-black text-white overflow-hidden">
       <div className="bubble-container absolute top-0 left-0 w-full h-full pointer-events-none z-0"></div>
       <div className="relative z-10 backdrop-blur-md bg-opacity-50 p-6 rounded-lg w-full max-w-5xl">
-        <div className="flex flex-col sm:flex-row gap-3 text-center justify-center items-center">
+        <div className="flex sm:flex-row gap-3 text-center justify-center items-center">
           <h1 className="text-center font-bold text-4xl sm:text-7xl mb-4">Bienvenidos</h1>
           <Welcome />
         </div>
