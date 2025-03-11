@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../Firebase/config";
-import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc, increment } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Go from "../iconos/go";
 
@@ -43,17 +43,18 @@ const HomeR = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const votar = async (id, votosActuales) => {
+  const votar = async (id) => {
     if (votoRealizado) {
       alert("Ya has votado.");
       return;
     }
     try {
       const candidatoRef = doc(db, "votaciones", id);
-      await updateDoc(candidatoRef, { votos: votosActuales + 1 });
+      await updateDoc(candidatoRef, { votos: increment(1) }); // ✅ Incremento atómico
+
       setCandidatos((prevCandidatos) =>
         prevCandidatos.map((c) =>
-          c.id === id ? { ...c, votos: votosActuales + 1 } : c
+          c.id === id ? { ...c, votos: c.votos + 1 } : c
         )
       );
       setVotoRealizado(true);
@@ -78,7 +79,7 @@ const HomeR = () => {
               <h2 className="text-2xl font-semibold mb-2">{nombre}</h2>
               <button
                 className="mt-4 px-6 py-3 border-2 border-black text-black font-semibold text-lg rounded-lg transition duration-300 hover:bg-black hover:text-white disabled:bg-gray-400"
-                onClick={() => votar(id, votos)}
+                onClick={() => votar(id)}
                 disabled={votoRealizado}
               >
                 {votoRealizado ? "Voto registrado" : "Votar"}
