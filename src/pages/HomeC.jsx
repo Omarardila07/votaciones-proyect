@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../Firebase/config";
-import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
+import { collection, getDocs, doc, updateDoc, increment } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Go from "../iconos/go";
 
@@ -43,17 +43,18 @@ const HomeC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const votar = async (id, votosActuales) => {
+  const votar = async (id) => {
     if (votoRealizado) {
       alert("Ya has votado.");
       return;
     }
     try {
-      const candidatoRef = doc(db, "contralores", id);
-      await updateDoc(candidatoRef, { votos: votosActuales + 1 });
+      const candidatoRef = doc(db, "votaciones", id);
+      await updateDoc(candidatoRef, { votos: increment(1) }); // ✅ Incremento atómico
+
       setCandidatos((prevCandidatos) =>
         prevCandidatos.map((c) =>
-          c.id === id ? { ...c, votos: votosActuales + 1 } : c
+          c.id === id ? { ...c, votos: c.votos + 1 } : c
         )
       );
       setVotoRealizado(true);
