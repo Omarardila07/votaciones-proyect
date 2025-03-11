@@ -49,7 +49,7 @@ const HomeC = () => {
       return;
     }
     try {
-      const candidatoRef = doc(db, "votaciones", id);
+      const candidatoRef = doc(db, "contralores", id);
       await updateDoc(candidatoRef, { votos: increment(1) }); // ✅ Incremento atómico
 
       setCandidatos((prevCandidatos) =>
@@ -71,22 +71,15 @@ const HomeC = () => {
     <div className="relative flex flex-col justify-center items-center min-h-screen p-6 bg-black text-white overflow-hidden">
       <div className="bubble-container absolute top-0 left-0 w-full h-full pointer-events-none z-0"></div>
       <div className="relative z-10 backdrop-blur-md bg-opacity-50 p-6 rounded-lg">
-        <h1 className="text-5xl font-bold mb-8 text-center">Contraloria 10</h1>
+        <h1 className="text-5xl font-bold mb-8 text-center">Contralores 10</h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
           {candidatos.map(({ id, nombre, imagen, votos }) => (
-            <div
-              key={id}
-              className="border p-6 rounded-lg shadow-lg bg-white text-black"
-            >
-              <img
-                src={imagen}
-                alt={nombre}
-                className="w-40 h-40 mx-auto mb-4 rounded-2xl shadow-md"
-              />
+            <div key={id} className="border p-6 rounded-lg shadow-lg bg-white text-black">
+              <img src={imagen} alt={nombre} className="w-40 h-40 mx-auto mb-4 rounded-2xl shadow-md" />
               <h2 className="text-2xl font-semibold mb-2">{nombre}</h2>
               <button
                 className="mt-4 px-6 py-3 border-2 border-black text-black font-semibold text-lg rounded-lg transition duration-300 hover:bg-black hover:text-white disabled:bg-gray-400"
-                onClick={() => votar(id, votos)}
+                onClick={() => votar(id)}
                 disabled={votoRealizado}
               >
                 {votoRealizado ? "Voto registrado" : "Votar"}
@@ -98,7 +91,6 @@ const HomeC = () => {
           <button>Siguiente</button>
           <Go />
         </div>
-        
       </div>
       <style>
         {`
